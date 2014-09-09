@@ -1,8 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
-#include <SDL.h>
+//#include <SDL.h>
 
-class Window {
+#include <SDL2/SDL.h>
+
+class Window2 {
 
 private:
 	SDL_Window* window;
@@ -14,7 +16,7 @@ private:
 
 public:
 	// Constructor de la clase
-	Window();
+	Window2();
 	// Cargar ventana
 	bool init(int width, int height);
 	// Cargar el fondo
@@ -22,7 +24,7 @@ public:
 	// Update ventana
 	bool updateWindow();
 	// Destructor de la clase
-	virtual ~Window();
+	virtual ~Window2();
 };
 
 #endif

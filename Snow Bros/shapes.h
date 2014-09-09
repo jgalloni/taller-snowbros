@@ -13,11 +13,11 @@
 #include <string>
 #include <cmath>
 
-class shapes {
+class shapes2 {
 public:
-	shapes();
-	shapes(std::string data,b2World* mundo);
-	virtual ~shapes();
+	shapes2();
+	shapes2(std::string data,b2World* mundo);
+	virtual ~shapes2();
 	bool b2d_objet(std::string data,b2World *mundo);
 	b2Body *_shape;
 

@@ -7,23 +7,23 @@
 
 #include "shapes.h"
 
-shapes::shapes() {
+shapes2::shapes2() {
 	_shape=NULL;
 	// TODO Auto-generated constructor stub
 
 }
-shapes::shapes(std::string data,b2World *mundo) {
+shapes2::shapes2(std::string data,b2World *mundo) {
 	if(!b2d_objet(data,mundo))
 		_shape=NULL;
 
 
 }
 
-shapes::~shapes() {
+shapes2::~shapes2() {
 	// TODO Auto-generated destructor stub
 }
 
-bool shapes::b2d_objet(std::string data, b2World *mundo){
+bool shapes2::b2d_objet(std::string data, b2World *mundo){
 	b2BodyDef b2dObjDef;
 	b2FixtureDef myFixtureDef;
 	b2CircleShape circle;
@@ -59,21 +59,21 @@ bool shapes::b2d_objet(std::string data, b2World *mundo){
 }
 
 //TODO no se si estas funciones van aca o ponerlas en una clase parser
-int shapes::getType(std::string data){
+int shapes2::getType(std::string data){
 }
 
-b2Vec2 shapes::getPos(std::string data){
+b2Vec2 shapes2::getPos(std::string data){
 }
 
 float getMass(std::string data){
 
 }
 
-b2Vec2 shapes::getSize(std::string data){
+b2Vec2 shapes2::getSize(std::string data){
 
 }
 
-b2Vec2 * shapes::getPoligonPoint(int lados, float scale){
+b2Vec2 * shapes2::getPoligonPoint(int lados, float scale){
 	b2Vec2 poly;
 	for(int i=0;i<lados;i++){
 		poly.x=cos(2*i/lados*PI);
@@ -82,8 +82,8 @@ b2Vec2 * shapes::getPoligonPoint(int lados, float scale){
 
 }
 
-float shapes::getScale(std::string data){
+float shapes2::getScale(std::string data){
 }
 
-bool shapes::getDynamic(std::string data){
+bool shapes2::getDynamic(std::string data){
 }

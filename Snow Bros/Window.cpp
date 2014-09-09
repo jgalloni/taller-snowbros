@@ -1,8 +1,10 @@
 #include "Window.h"
 #include <iostream>
-#include "SDL_image.h"
+//#include "SDL_image.h"
 
-Window::Window() {
+#include <SDL2/SDL_image.h>
+
+Window2::Window2() {
 	window = NULL;
 	wSurface = NULL;
 	error = false;
@@ -11,7 +13,7 @@ Window::Window() {
 	BGimage = NULL;
 }
 
-bool Window::init(int width, int height) {
+bool Window2::init(int width, int height) {
 	if (height > 0 && width > 0){
 		SCREEN_WIDTH = width;
 		SCREEN_HEIGHT = height;
@@ -41,7 +43,7 @@ bool Window::init(int width, int height) {
 
 }
 
-bool Window::updateWindow() {
+bool Window2::updateWindow() {
 	 if (SDL_UpdateWindowSurface(window) != 0 ) {
 		 // TODO: Catch Error and handle log.
 		 error = true;
@@ -49,7 +51,7 @@ bool Window::updateWindow() {
 	 return !error;
 }
 
-bool Window::loadBackground(const char* pathToBG) {
+bool Window2::loadBackground(const char* pathToBG) {
 	BGimage = IMG_Load(pathToBG);
 	if (!BGimage) {
 		// TODO: Catch Error and handle log.
@@ -60,7 +62,7 @@ bool Window::loadBackground(const char* pathToBG) {
 	return !error;
 }
 
-Window::~Window(){
+Window2::~Window2(){
 	if(BGimage) {
 		SDL_FreeSurface(BGimage);
 		BGimage = NULL;
