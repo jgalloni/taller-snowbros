@@ -77,6 +77,7 @@ string get_node(char* datas, string param, string file, char* defaultData) {
 				+ reader.getFormattedErrorMessages();
 		log.escribirLog("ERROR", errorLectura);
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (root[param][data].empty()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -85,6 +86,7 @@ string get_node(char* datas, string param, string file, char* defaultData) {
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isString()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -121,6 +123,7 @@ string get_node(string data, string param, string file, int field,
 				+ reader.getFormattedErrorMessages();
 		log.escribirLog("ERROR", errorLectura);
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (root[param][field][data].empty()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -130,6 +133,7 @@ string get_node(string data, string param, string file, int field,
 		log.escribirLog("ERROR",
 				"campo " + data + " de " + param + " vacio, del objeto" + s);
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][field][data].isString()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -164,10 +168,10 @@ int get_node(string data, string param, string file, int defaultData) {
 	if (root[param][data].empty()) {
 		if (!log.abrirLog(PARSERLOG)) {
 			std::cout << "Error al abrir archivo de log" << std::endl;
-			return defaultData;
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isInt()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -204,10 +208,10 @@ int get_node(char* datas, string param, string file, int defaultData) {
 	if (root[param][data].empty()) {
 		if (!log.abrirLog(PARSERLOG)) {
 			std::cout << "Error al abrir archivo de log" << std::endl;
-			return defaultData;
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isInt()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -253,6 +257,7 @@ int get_node(string data, string param, string file, int field,
 		log.escribirLog("ERROR",
 				"campo " + data + " de " + param + " vacio, del objeto" + s);
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][field][data].isInt()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -291,6 +296,7 @@ float get_node(string data, string param, string file, float defaultData) {
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isNumeric()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -331,6 +337,7 @@ float get_node(char* datas, string param, string file, float defaultData) {
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isNumeric()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -376,6 +383,7 @@ float get_node(string data, string param, string file, int field,
 		log.escribirLog("ERROR",
 				"campo " + data + " de " + param + " vacio, del objeto" + s);
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][field][data].isNumeric()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -414,6 +422,7 @@ bool get_node(string data, string param, string file, bool defaultData) {
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isBool()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -454,6 +463,7 @@ bool get_node(char* datas, string param, string file, bool defaultData) {
 		}
 		log.escribirLog("ERROR", "campo " + data + " de " + param + " vacio");
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][data].isBool()) {
 		if (!log.abrirLog(PARSERLOG)) {
@@ -499,6 +509,7 @@ bool get_node(string data, string param, string file, int field,
 		log.escribirLog("ERROR",
 				"campo " + data + " de " + param + " vacio, del objeto" + s);
 		log.cerrarLog();
+		return defaultData;
 	}
 	if (!root[param][field][data].isBool()) {
 		if (!log.abrirLog(PARSERLOG)) {
