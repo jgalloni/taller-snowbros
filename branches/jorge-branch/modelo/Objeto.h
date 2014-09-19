@@ -25,7 +25,7 @@ public:
 
 	Tamano tamano();
 	virtual void tamano(Tamano);
-	virtual void tamano(uint32 alto, uint32 ancho);
+	virtual void tamano(float alto, float ancho);
 
 	int32 escala();
 	void escala(int32);

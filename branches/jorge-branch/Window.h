@@ -45,7 +45,7 @@ public:
 	// Cargar el fondo
 	bool loadBackground(const char* pathToBG);
 	// Inserta un personaje
-	bool insertarPersonaje(float32 posX, float32 posY, uint32 height, uint32 width,float,float,b2Body *b);
+	bool insertarPersonaje(float32 posX, float32 posY, float height, float width,float,float,b2Body *b);
 	// Inserta una figura
 	void insertarFigura(IDibujable* figura);
 	// manejar evento

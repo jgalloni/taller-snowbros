@@ -102,12 +102,12 @@ bool windowInit(int widthScreen, int heightScreen) {
 	b2Body* character =worldB2D->CreateBody(&characterDef);
 	b2FixtureDef myFixtureDef;
 	b2PolygonShape poligon;
-	poligon.SetAsBox(0.5,0.75); //le doy dimenciones
+	poligon.SetAsBox(0.5,0.5); //le doy dimenciones
 	myFixtureDef.shape = &poligon; //defino que es un poligono
 	myFixtureDef.friction=3;
 	character->CreateFixture(&myFixtureDef);
 	character->SetFixedRotation(true);
-	statusOK = w->insertarPersonaje(0, 0, 0.5, 0.75,widthRatio,heightRatio,character);
+	statusOK = w->insertarPersonaje(0, 0, 1, 1,widthRatio,heightRatio,character);
 	return statusOK;
 }
 

@@ -22,22 +22,22 @@ typedef std::vector<IDibujable*> ListaDibujables;
 class Tamano {
 public:
 	Tamano();
-	inline Tamano(int alto, int ancho) : tAlto(alto) , tAncho(ancho) {};
+	inline Tamano(float alto, float ancho) : tAlto(alto) , tAncho(ancho) {};
 	virtual ~Tamano(){};
 
-	inline int alto(){
+	inline float alto(){
 		return tAlto;
 	}
 
-	inline void alto(int a){
+	inline void alto(float a){
 		tAlto = a;
 	}
 
-	inline int ancho(){
+	inline float ancho(){
 		return tAncho;
 	}
 
-	inline void ancho(int a){
+	inline void ancho(float a){
 		tAncho = a;
 	}
 
@@ -47,7 +47,7 @@ public:
 	}
 
 private:
-	int tAlto, tAncho;
+	float tAlto, tAncho;
 };
 
 enum TECLAS

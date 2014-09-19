@@ -6,6 +6,7 @@
  */
 
 #include "Objeto.h"
+#include <iostream>
 
 Objeto::Objeto() :
 	oPosicion(0.0, 0.0), oTamano(Tamano(100, 100)),
@@ -32,7 +33,7 @@ Tamano Objeto::tamano(){
 void Objeto::tamano(Tamano t){
 	oTamano = t;
 }
-void Objeto::tamano(uint32 alto, uint32 ancho){
+void Objeto::tamano(float alto, float ancho){
 	oTamano.alto(alto);
 	oTamano.ancho(ancho);
 }
@@ -109,6 +110,6 @@ void Objeto::moverXY(float32 x, float32 y){
 
 SDL_Rect Objeto::getSDL_Rect()
 {
-	SDL_Rect r = {  ((int)posicion().x-tamano().ancho()/2) *oEscalaX, (((int)posicion().y -tamano().alto()/2)*oEscalaY)+500,(int)(tamano().ancho())*escalax() , -(int)(tamano().alto())*escalay() };
+	SDL_Rect r = {  (posicion().x-tamano().ancho()/2) *oEscalaX,((posicion().y +(tamano().alto()/2))*oEscalaY),(tamano().ancho()*oEscalaX) , -(tamano().alto()*oEscalaY) };
 	return r;
 }
