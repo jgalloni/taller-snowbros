@@ -30,6 +30,12 @@ public:
 	int32 escala();
 	void escala(int32);
 
+	int32 escalax();
+	void escalax(int32);
+
+	int32 escalay();
+	void escalay(int32);
+
 	int32 angulo();
 	void angulo(int32);
 
@@ -55,6 +61,8 @@ protected:
 	b2Vec2 oPosicion;
 	Tamano oTamano;
 	int32 oEscala;
+	int32 oEscalaX;
+	int32 oEscalaY;
 	float32 oAngulo;
 	SDL_Color oColor;
 	uint32 oMasa;

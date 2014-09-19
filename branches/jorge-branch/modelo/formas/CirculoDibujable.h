@@ -19,7 +19,7 @@ private:
 			anguloInit -= 360;
 		}
 		int32 anguloEnd = anguloInit + 50;
-		return arcRGBA(dRenderer, oPosicion.x, oPosicion.y, radioArco, anguloInit, anguloEnd, newRed, newGreen, newBlue, oColor.a);
+		return arcRGBA(dRenderer,oPosicion.x*oEscalaX ,-oPosicion.y*oEscalaY, radioArco*oEscalaX, anguloInit, anguloEnd, newRed, newGreen, newBlue, oColor.a);
 	}
 
 public:
@@ -31,7 +31,7 @@ public:
 	virtual void render() {
 		// Se redefine distinto, usa el renderer directo
 		int status;
-		status = filledCircleRGBA(dRenderer, oPosicion.x, oPosicion.y, rad, oColor.r, oColor.g, oColor.b, oColor.a);
+		status = filledEllipseRGBA(dRenderer, oPosicion.x*oEscalaX ,-oPosicion.y*oEscalaY, oEscalaX*rad,oEscalaY*rad, oColor.r, oColor.g, oColor.b, oColor.a);
 		if(status != 0) {
 			Logger& log = * Logger::Instancia();
 			if(!log.abrirLog(DIBUJABLELOG)) {

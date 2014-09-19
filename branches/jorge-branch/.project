@@ -24,11 +24,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>main.cpp</name>
-			<type>1</type>
-			<location>/home/coco/eclipseWS/snowtest/main.cpp</location>
-		</link>
-	</linkedResources>
 </projectDescription>

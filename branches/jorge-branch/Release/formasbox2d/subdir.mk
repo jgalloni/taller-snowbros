@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../formasbox2d/parametros.cpp \
 ../formasbox2d/shapes.cpp 
 
 OBJS += \
+./formasbox2d/parametros.o \
 ./formasbox2d/shapes.o 
 
 CPP_DEPS += \
+./formasbox2d/parametros.d \
 ./formasbox2d/shapes.d 
 
 

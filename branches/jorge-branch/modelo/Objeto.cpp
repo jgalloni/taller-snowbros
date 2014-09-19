@@ -9,7 +9,7 @@
 
 Objeto::Objeto() :
 	oPosicion(0.0, 0.0), oTamano(Tamano(100, 100)),
-	oEscala(1.0), oAngulo(0), oMasa(10.0), oEsEstatico(true)
+	oEscalaX(1.0),oEscalaY(1.0), oAngulo(0), oMasa(10.0), oEsEstatico(true)
 {
 	oColor.r = 0.0; oColor.g = 0.0; oColor.b = 0.0; oColor.a = 1.0;
 }
@@ -42,6 +42,20 @@ int32 Objeto::escala(){
 }
 void Objeto::escala(int32 e){
 	oEscala = e;
+}
+
+int32 Objeto::escalax(){
+	return oEscalaX;
+}
+void Objeto::escalax(int32 e){
+	oEscalaX = e;
+}
+
+int32 Objeto::escalay(){
+	return oEscalaY;
+}
+void Objeto::escalay(int32 e){
+	oEscalaY = e;
 }
 
 int32 Objeto::angulo(){
@@ -95,6 +109,6 @@ void Objeto::moverXY(float32 x, float32 y){
 
 SDL_Rect Objeto::getSDL_Rect()
 {
-	SDL_Rect r = {  (int)posicion().x-tamano().ancho()/2 , (int)posicion().y -tamano().alto()/2,(int)(tamano().ancho())*escala() , (int)(tamano().alto())*escala() };
+	SDL_Rect r = {  ((int)posicion().x-tamano().ancho()/2) *oEscalaX, (((int)posicion().y -tamano().alto()/2)*oEscalaY)+500,(int)(tamano().ancho())*escalax() , -(int)(tamano().alto())*escalay() };
 	return r;
 }

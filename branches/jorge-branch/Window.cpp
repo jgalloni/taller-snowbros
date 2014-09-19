@@ -182,7 +182,7 @@ Escenario* Window::crearEscenario(std::string BGpath) {
 	 return escena;
 }
 
-bool Window::insertarPersonaje(float32 posX, float32 posY, uint32 height, uint32 width,b2Body *b) {
+bool Window::insertarPersonaje(float32 posX, float32 posY, uint32 height, uint32 width,float escalax,float escalay,b2Body *b) {
 	Logger& log = * Logger::Instancia();
 	Personaje* personaje = new Personaje();
 	if(!personaje) {
@@ -196,6 +196,8 @@ bool Window::insertarPersonaje(float32 posX, float32 posY, uint32 height, uint32
 	}
 	personaje->setRenderer(wRenderer);
 	personaje->cargarImagen("imagenes/parado.png");
+	personaje->escalax(escalax);
+	personaje->escalay(-escalay);
 	personaje->posicion(posX, posY);
 	personaje->tamano(height, width);
 	wEscenario->agregarDibujable(personaje);

@@ -10,7 +10,7 @@
 class PoligonoDibujable: public Objeto, public IDibujable{
 
 private:
-	Sint16 *vx, *vy;
+	float *vx, *vy;
 	int ver; // Cantidad de vertices
 public:
 	PoligonoDibujable() {
@@ -30,8 +30,8 @@ public:
 		Sint16 *px =new Sint16 [ver];
 		Sint16 *py =new Sint16 [ver];
 		for(int i=0;i<ver;i++){
-			px[i]=(vx[i]*cos(oAngulo))-(vy[i]*sin(oAngulo))+oPosicion.x;
-			py[i]=(vy[i]*cos(oAngulo))+(vx[i]*sin(oAngulo))+oPosicion.y;
+			px[i]=((vx[i]*cos(oAngulo))-(vy[i]*sin(oAngulo))+oPosicion.x)*oEscalaX;
+			py[i]=(-(vy[i]*cos(oAngulo))-(vx[i]*sin(oAngulo))+oPosicion.y)*oEscalaY;
 		}
 		status = filledPolygonRGBA(dRenderer, px, py, ver, oColor.r, oColor.g, oColor.b, oColor.a);
 		if(status != 0) {
@@ -49,7 +49,7 @@ public:
 		delete py;
 	}
 
-	bool setVertices(Sint16* vx, Sint16* vy, int nvert) {
+	bool setVertices(float* vx, float* vy, int nvert) {
 		if (vx != NULL) {
 			this->vx = vx;
 		} else {

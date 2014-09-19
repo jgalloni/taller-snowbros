@@ -18,7 +18,7 @@
 class Window {
 
 private:
-	SDL_Window* window;
+	SDL_Window *window;
 	SDL_Renderer* wRenderer;
 
 	Escenario* wEscenario;
@@ -37,6 +37,7 @@ private:
 	Escenario* crearEscenario(std::string BGpath);
 
 public:
+
 	// Constructor de la clase
 	Window();
 	// Cargar ventana
@@ -44,7 +45,7 @@ public:
 	// Cargar el fondo
 	bool loadBackground(const char* pathToBG);
 	// Inserta un personaje
-	bool insertarPersonaje(float32 posX, float32 posY, uint32 height, uint32 width,b2Body *b);
+	bool insertarPersonaje(float32 posX, float32 posY, uint32 height, uint32 width,float,float,b2Body *b);
 	// Inserta una figura
 	void insertarFigura(IDibujable* figura);
 	// manejar evento

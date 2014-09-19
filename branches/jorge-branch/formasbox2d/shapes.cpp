@@ -159,14 +159,16 @@ int shapes::num_lados(std::string data) {
 
 bool shapes::dibujarSdl(parametros *param,b2Body *b,Window* w){
 	int numero_de_vertices;
-	Sint16* vx;
-	Sint16* vy;
+	float* vx;
+	float* vy;
 	switch(param->tipo){
 	case CIRCULO:
 		circulo = new CirculoDibujable();
-		circulo->setRadio((int)param->escala*param->heightRatio);// esto hay q modifciarlo apra qeus ea un elipse
+		circulo->setRadio(param->escala);
+		circulo->escalax(param->widthRatio);
+		circulo->escalay(param->heightRatio);
 		circulo->color(param->color);
-		circulo->posicion((param->posicion.x+5.0)*param->widthRatio,param->posicion.y*param->heightRatio*(-1.0)+param->heightScreen);
+		circulo->posicion((param->posicion.x),param->posicion.y-param->heightWorld);
 		circulo->angulo(-param->angulo);
 		b->SetUserData(circulo);
 		w->insertarFigura(circulo);
@@ -174,10 +176,12 @@ bool shapes::dibujarSdl(parametros *param,b2Body *b,Window* w){
 	case RECTANGULO:
 		poligono = new PoligonoDibujable();
 		numero_de_vertices = param->lados;
-		vx = new Sint16[numero_de_vertices]; vx[0] = -(param->ancho)*param->widthRatio/2; vx[1] = (param->ancho)*param->widthRatio/2; vx[2] = (param->ancho)*param->widthRatio/2; vx[3] = -(param->ancho)*param->widthRatio/2;
-		vy = new Sint16[numero_de_vertices]; vy[0] = param->alto*(param->heightRatio/2); vy[1] = param->alto*(param->heightRatio/2); vy[2] = param->alto*(-param->heightRatio/2); vy[3] = param->alto*(-param->heightRatio/2);
+		vx = new float[numero_de_vertices]; vx[0] = -(param->ancho)/2; vx[1] = (param->ancho)/2; vx[2] = (param->ancho)/2; vx[3] = -(param->ancho)/2;
+		vy = new float[numero_de_vertices]; vy[0] = -param->alto/2; vy[1] = -param->alto/2; vy[2] = param->alto/2; vy[3] = param->alto/2;
+		poligono->escalax(param->widthRatio);
+		poligono->escalay(-param->heightRatio);
 		poligono->setVertices(vx, vy, numero_de_vertices);
-		poligono->moverXY(param->posicion.x*param->widthRatio,param->posicion.y*(-param->heightRatio)+param->heightScreen);
+		poligono->posicion(param->posicion.x,param->posicion.y-param->heightWorld);
 		poligono->angulo(-param->angulo);
 		poligono->color(param->color);
 		b->SetUserData(poligono);
@@ -186,15 +190,18 @@ bool shapes::dibujarSdl(parametros *param,b2Body *b,Window* w){
 	case POLIGONO:
 			poligono = new PoligonoDibujable();
 			numero_de_vertices = param->lados;
-			vx = new Sint16[numero_de_vertices];
-			vy = new Sint16[numero_de_vertices];
+			vx = new float[numero_de_vertices];
+			vy = new float[numero_de_vertices];
+			poligono->escalax(param->widthRatio);
+			poligono->escalay(-param->heightRatio);
+
 			for(int i=0;i<numero_de_vertices;i++){
-				vx[i]=param->puntos[i].x*param->widthRatio;
-				vy[i]=param->puntos[i].y*(-param->heightRatio);
+				vx[i]=param->puntos[i].x;
+				vy[i]=param->puntos[i].y;
 			}
 			poligono->setVertices(vx, vy, numero_de_vertices);
 			poligono->color(param->color);
-			poligono->posicion(param->posicion.x*param->widthRatio,param->posicion.y*-param->heightRatio+param->heightScreen);
+			poligono->posicion(param->posicion.x,param->posicion.y-param->heightWorld);
 			poligono->angulo(-param->angulo);
 			b->SetUserData(poligono);
 			w->insertarFigura(poligono);
@@ -202,15 +209,17 @@ bool shapes::dibujarSdl(parametros *param,b2Body *b,Window* w){
 	case IRREGULAR:
 				poligono = new PoligonoDibujable();
 				numero_de_vertices = param->lados;
-				Sint16* vx = new Sint16[numero_de_vertices];
-				Sint16* vy = new Sint16[numero_de_vertices];
+				float* vx = new float[numero_de_vertices];
+				float* vy = new float[numero_de_vertices];
+				poligono->escalax(param->widthRatio);
+				poligono->escalay(-param->heightRatio);
 				for(int i=0;i<numero_de_vertices;i++){
-					vx[i]=(param->puntos[i].x)*param->widthRatio;
-					vy[i]=(param->puntos[i].y)*(-param->heightRatio);
+					vx[i]=(param->puntos[i].x);
+					vy[i]=-(param->puntos[i].y);
 				}
 				poligono->setVertices(vx, vy, numero_de_vertices);
 				poligono->color(param->color);
-				poligono->posicion(param->posicion.x*param->widthRatio,(param->posicion.y*(-param->heightRatio))+param->heightScreen);
+				poligono->posicion(param->posicion.x,param->posicion.y-param->heightWorld);
 				poligono->angulo(-param->angulo);
 				b->SetUserData(poligono);
 				w->insertarFigura(poligono);

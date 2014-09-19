@@ -5,6 +5,8 @@
 #include "formasbox2d/shapes.h"
 #include "utiles/Logger.h"
 #include "parser/parser.h"
+#include <SDL2/SDL.h>
+
 
 #define OKEXIT 0
 #define LOADERROR -1
@@ -60,7 +62,6 @@ int main() {
 		shapes temp(sConfig, worldB2D, i, w);
 		tempo.push_back(temp);
 	}
-
 	loopPrincipal(tempo);
 	close(tempo);
 
@@ -106,7 +107,7 @@ bool windowInit(int widthScreen, int heightScreen) {
 	myFixtureDef.friction=3;
 	character->CreateFixture(&myFixtureDef);
 	character->SetFixedRotation(true);
-	statusOK = w->insertarPersonaje(0, 0, 75, 50,character);
+	statusOK = w->insertarPersonaje(0, 0, 0.5, 0.75,widthRatio,heightRatio,character);
 	return statusOK;
 }
 
@@ -119,8 +120,8 @@ bool loopPrincipal(list<shapes> tempo) {
 		worldB2D->Step(1 / 60.0f, 2, 4);
 		for (b2Body* b = worldB2D->GetBodyList(); b; b = b->GetNext()) {
 			((Objeto*) b->GetUserData())->posicion(
-					(b->GetPosition().x) * widthRatio,
-					b->GetPosition().y * heightRatio * (-1) + heightScreen);
+					(b->GetPosition().x),
+					b->GetPosition().y -  heightWorld);
 			((Objeto*) b->GetUserData())->angulo(
 					-b->GetAngle() * 57.295779513082320876f);
 		}

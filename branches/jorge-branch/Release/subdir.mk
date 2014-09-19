@@ -24,11 +24,4 @@ CPP_DEPS += \
 	@echo 'Finished building: $<'
 	@echo ' '
 
-main.o: /home/coco/eclipseWS/snowtest/main.cpp
-	@echo 'Building file: $<'
-	@echo 'Invoking: GCC C++ Compiler'
-	g++ -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
 

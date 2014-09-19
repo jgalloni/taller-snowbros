@@ -1,7 +1,7 @@
 {
     "escenario": {
         "alto-px": 500,
-        "ancho-px": 1000,
+        "ancho-px": 250,
         "alto-un": 10,
         "ancho-un": 20
     },
@@ -9,7 +9,7 @@
          {
             "estatico": false,
             "tipo": "poli",
-            "lados": 5,
+            "lados": 3,
             "escala":2,
             "x": 5,
             "y": 5,
